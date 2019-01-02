@@ -9,9 +9,9 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override'); 
+const morgan = require('morgan');
 const session = require('express-session');
 const router = require('../routes/index');
-
 
 module.exports = app => {
 
@@ -65,6 +65,11 @@ module.exports = app => {
         resave: true,
         saveUninitialized:true
     }));
+    //@app: use this middleware for logging all incoming requests
+    // ?Morgan is a HTTP request logger middleware for node.js : https://github.com/expressjs/morgan#readme
+
+    app.use(morgan('dev'));
+
     //
 
     /*=====  End of Middlewares Section  ======*/
@@ -84,7 +89,10 @@ module.exports = app => {
     /*=============================================
     =            Routes                           =
     =============================================*/
+    //enviamos variable a routes/index.js
     router(app);
+    //static files : lets configure the static public folder
+    app.use('/public', express.static(path.join(__dirname, '../public')))
 
 
     /*=====  End of Routes  ======*/

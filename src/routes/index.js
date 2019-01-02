@@ -14,13 +14,14 @@ module.exports = app => {
     so we will use 
     */
     // A hand-made activity server reporter
+    /*
     app.use(function (req, res, next) {
         var date = new Date();
         var timestamp = date.getHours() + ":" + date.getMinutes();
         console.log('[' + timestamp + ']', req.method, 'on', req.hostname + ':' + req.socket.localPort + ' to  ' + req.originalUrl);
         next();
     });
-
+*/
 
 
     /*----------  Home Routes          ----------*/

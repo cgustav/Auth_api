@@ -2,7 +2,7 @@ const express = require('express');
 const controller = {};
 
 controller.Index = (req, res) => {
-    res.send('Wena Men!!');
+    res.render('index');
 }
 controller.About = (req, res) => {
     res.send('About Something :)!!');
