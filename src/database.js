@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-//@Mongoose: stablish a connection with MongoDB, through this instance of mongoose module with a few custom rules
-//and we will use a promise to notify the result 
+//@Mongoose: Stablish connection with MongoDB allowed in the local environment, through this instance of mongoose module with a few custom rules
+//We will use a promise to notify the result 
 mongoose.connect('mongodb://localhost/notes-db-app',{
 useCreateIndex: true,
 useNewUrlParser: true,

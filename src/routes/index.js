@@ -6,22 +6,16 @@ const users = require('../controllers/users');
 module.exports = app => {
 
     /*
-    We could use the following chunk of code to manage server requests and response.
-    but in long terms this practice is not easily maintainable and escalable.
+    We could this chunk of code to manage server requests and response.
+    
     router.get('/', (req,res) =>{
     res.send('index');
     });
+
+    but in long terms this practice is not easily maintainable and escalable.
+
     so we will use 
     */
-    // A hand-made activity server reporter
-    /*
-    app.use(function (req, res, next) {
-        var date = new Date();
-        var timestamp = date.getHours() + ":" + date.getMinutes();
-        console.log('[' + timestamp + ']', req.method, 'on', req.hostname + ':' + req.socket.localPort + ' to  ' + req.originalUrl);
-        next();
-    });
-*/
 
 
     /*----------  Home Routes          ----------*/
@@ -52,3 +46,14 @@ module.exports = app => {
 
     app.use(router);
 }
+
+/*
+    // A hand-made activity server reporter
+/*
+app.use(function (req, res, next) {
+    var date = new Date();
+    var timestamp = date.getHours() + ":" + date.getMinutes();
+    console.log('[' + timestamp + ']', req.method, 'on', req.hostname + ':' + req.socket.localPort + ' to  ' + req.originalUrl);
+    next();
+});
+*/

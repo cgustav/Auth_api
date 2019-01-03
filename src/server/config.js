@@ -8,7 +8,7 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const methodOverride = require('method-override'); 
+const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 const router = require('../routes/index');
@@ -20,11 +20,11 @@ module.exports = app => {
     =            Views & Handlebars Engine        =
     =============================================*/
 
-    // @app: let's concat your root directory path (src) with the 'view' (existing) folder to especify the location of view files (to express-handlebars engine functionality) 
+    // @app: let's concatenate your root directory path (src) with the 'view' (already existing) folder to especify the location of view files container (this because express-handlebars engine functionality) 
     app.set('views', path.join(__dirname, '../views'));
 
 
-    // @app: Let's create a view engine configuration. We will set a configuration property called '.hbs'. And we will put in it a configuration object, (exphbs = express-handlebars with a few custom settings)
+    // @app: Let's create a view engine config. We will set a special property called '.hbs'. And we will put in it this configuration object, (exphbs = express-handlebars with a few custom settings)
     app.engine('.hbs', exphbs({
         //@(exphbs): receive a configuration object with the following params: 
         defaultLayout: 'main',
@@ -33,7 +33,7 @@ module.exports = app => {
         extname: '.hbs'
     }));
 
-    //@app: now, your view engine by default (view engine variable) is handlebars engine, with all configurations i made before (.hbs). 
+    //@app: now, your view engine by default (via 'view engine' property) is handlebars engine, with all these configurations i made before (specifying .hbs). 
     app.set('view engine', '.hbs');
 
 
@@ -46,28 +46,28 @@ module.exports = app => {
     =            Middlewares Section              =
     =============================================*/
 
-   
-    //@app: lets set a middleware between the my application requests and my API logic to make a response
-    //  ?urlenconded = A built-in middleware function in Express.  It parses incoming request with urlencoded payloads and is based on body-parser.
+
+    //@app: Let's set bunch of middlewares between the client requests and this API functionality to manage the way it process the requests and the way the response take its form.
+    //  ?urlenconded = A built-in middleware function in Express.  It parses incoming request with urlencoded payloads{ and is based on body-parser }.
     // ?... Returns middleware that only parses urlencoded bodies and only looks at requests where the Content-Type header matches the type option. This parser accepts only UTF-8 encoding of the body.
     // todo @bodyParser.OptionsUrlEncoded.extended = false;
     // ? The “extended” syntax allows for rich objects and arrays to be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded.
-    app.use(express.urlencoded({extended:false}));
+    app.use(express.urlencoded({ extended: false }));
 
 
-    //@app: let's enable PUT, PATCH and DELETE's verbs where the client doesn't support it (in this case we will use this middleware for form submittion requests). We will use a _method in the body request to patch (override) this feature
+    //@app: Let's enable PUT, PATCH and DELETE's verbs where the client doesn't support it (in this case for form submittion requests). And We will use a property called _method in the body request to patch (override) this feature
     app.use(methodOverride('_method'));
 
-    //@app: let's create a new session middleware through a [express-session object] with the given options
+    //@app: Let's create a new session middleware through this [express-session object instantiation]
     app.use(session({
         //express-session receive a configuration object with the following params:
         secret: 'mysecretapp',
         resave: true,
-        saveUninitialized:true
+        saveUninitialized: true
     }));
+
     //@app: use this middleware for logging all incoming requests
     // ?Morgan is a HTTP request logger middleware for node.js : https://github.com/expressjs/morgan#readme
-
     app.use(morgan('dev'));
 
     //
@@ -89,9 +89,10 @@ module.exports = app => {
     /*=============================================
     =            Routes                           =
     =============================================*/
-    //enviamos variable a routes/index.js
+    //@app: we're giving application object to express.Router() function 
     router(app);
-    //static files : lets configure the static public folder
+    //@app: let's configure the static files path folder throu the Express build-in middleware  [express.static]
+    // ?Express.static()....
     app.use('/public', express.static(path.join(__dirname, '../public')))
 
 
