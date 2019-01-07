@@ -1,12 +1,10 @@
 const express = require('express');
 const controller = {};
 
-controller.ListAll = (req, res) => {
-    res.send('Listing notes from database');
+controller.SignIn = (req, res) => {
+    res.render('signin');
 }
-/*
 controller.SignUp = (req, res) => {
-    res.send('Listo para entrar');
+    res.render('signup');
 }
-*/
 module.exports = controller;

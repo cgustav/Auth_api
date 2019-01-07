@@ -4,7 +4,9 @@ const controller = {};
 controller.Index = (req, res) => {
     res.render('index');
 }
+
 controller.About = (req, res) => {
-    res.send('About Something :)!!');
+    res.render('about');
 }
+
 module.exports = controller;

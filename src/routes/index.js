@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const home = require('../controllers/home');
-const notes = require('../controllers/notes');
-const users = require('../controllers/users');
+const home = require('../controllers/homeController');
+const notes = require('../controllers/notesController');
+const users = require('../controllers/usersController');
 
 module.exports = app => {
 
@@ -39,7 +39,12 @@ module.exports = app => {
     /*----------  Notes Routes          ----------*/
 
     router.get('/notes', notes.ListAll);
-    //router.get('/signup', users.SignUp);
+    router.get('/notes/:id', notes.ListOne);
+    router.post('/notes/add', notes.AddOne);
+    router.put('/notes/:id');
+    router.delete('/notes/:id');
+    
+    
 
     /*=====  End of Notes Routes             ======*/
 

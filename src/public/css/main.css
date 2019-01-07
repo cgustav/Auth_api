@@ -3,6 +3,12 @@
     font-family: 'Montserrat Subrayada', sans-serif;
 }
 
-.logo, .sublogo {
+.logo,
+.sublogo {
     filter: saturate(2);
+}
+
+.btn-main {
+    background-color: #FF3200;
+    color: white;
 }
