@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 //We will use a promise to notify the result 
 mongoose.connect('mongodb://localhost/notes-db-app',{
 useCreateIndex: true,
-useNewUrlParser: true,
-useFindAndModify: false
+useNewUrlParser: true
 })
 .then(db => console.log('DB is connected!'))
 .catch(err => console.error(err));

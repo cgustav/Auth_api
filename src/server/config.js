@@ -10,8 +10,11 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
+const flash = require('connect-flash');
+const passport = require('passport');
 const session = require('express-session');
 const router = require('../routes/index');
+
 
 module.exports = app => {
 
@@ -70,8 +73,14 @@ module.exports = app => {
     // ?Morgan is a HTTP request logger middleware for node.js : https://github.com/expressjs/morgan#readme
     app.use(morgan('dev'));
 
-    //
+    // ?Passport is authentication middleware for NodeJS extremely flexible and modular. Passport can be unobstrusively dropped in to any Express-based web application. :  http://www.passportjs.org/docs/downloads/html/
 
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    //?Flash Message Middleware: A special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user. The flash is typically used in combination with redirects, ensuring that the message is available to the next page that is to be rendered.
+
+    app.use(flash());
     /*=====  End of Middlewares Section  ======*/
 
 
@@ -79,7 +88,15 @@ module.exports = app => {
     /*=============================================
     =            Global Variables                 =
     =============================================*/
+    app.use((req, res, next) => {
+        res.locals.success_msg = req.flash('success_msg');
+        res.locals.error_msg = req.flash('error_msg');
+        res.locals.error = req.flash('error');
+        res.locals.user = req.user || null;
 
+        //Follow the Routes callbacks
+        next();
+    });
 
 
     /*=====  End of Global Variables  ======*/

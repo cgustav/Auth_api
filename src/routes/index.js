@@ -6,15 +6,15 @@ const users = require('../controllers/usersController');
 module.exports = app => {
 
     /*
-    We could this chunk of code to manage server requests and response.
+    We could use this chunk of code to manage the server request/response cycle.
     
     router.get('/', (req,res) =>{
     res.send('index');
     });
 
-    but in long terms this practice is not easily maintainable and escalable.
+    but in long terms this code won't be easily maintainable and escalable.
 
-    so we will use 
+    so is a better option to use:
     */
 
 
@@ -31,6 +31,8 @@ module.exports = app => {
 
     router.get('/signin', users.SignIn);
     router.get('/signup', users.SignUp);
+    router.post('/signin', users.Authenticate);
+    router.post('/signup', users.Registry);
 
     /*=====  End of Users Routes             ======*/
 
@@ -52,8 +54,7 @@ module.exports = app => {
     app.use(router);
 }
 
-/*
-    // A hand-made activity server reporter
+
 /*
 app.use(function (req, res, next) {
     var date = new Date();

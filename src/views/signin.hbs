@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card mt-4 text-center">
+            <div class="card-header">
+                <h1 class="h4 text-oranged">
+                    Login
+                </h1>
+            </div>
+            <img src="../../public/img/orange.png" alt="Orange Sign In" class="rounded-circle mx-auto d-block logo m-4">
+            <div class="card-body">
+                <form action="/users/signin" method="POST">
+                    <div class="form-group">
+                        <input id="inEmail" type="email" class="form-control" name="email" placeholder="your@email.com"
+                            autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input id="inPassword" type="password" class="form-control" name="password" placeholder="your password">
+                    </div>
+                    <button id="btn-sender" class="btn btn-orangized btn-block">
+                        SignIn
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="../../public/js/login-control.js"></script>

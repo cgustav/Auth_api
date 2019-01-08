@@ -3,6 +3,11 @@
     font-family: 'Montserrat Subrayada', sans-serif;
 }
 
+.text-oranged {
+    color: rgb(255, 92, 43);
+    font-family: 'Montserrat', sans-serif;
+}
+
 .logo,
 .sublogo {
     filter: saturate(2);
@@ -11,4 +16,26 @@
 .btn-main {
     background-color: #FF3200;
     color: white;
+}
+
+.form-control::placeholder {
+    color: rgb(72, 48, 25);
+}
+
+.form-control {
+    height: 3.4em;
+}
+
+.control-label {
+    text-align: left;
+}
+
+.btn-orangized {
+    background-color: #F1592A;
+    filter: saturate(2);
+    color: white;
+}
+
+.btn-orangized:focus {
+    background-color: #F1592A;
 }
